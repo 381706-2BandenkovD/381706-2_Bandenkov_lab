@@ -11,6 +11,8 @@ if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компиля
   set(CMAKE_BUILD_TYPE Release) #Если нет то устанавливаем Release
 endif()
 
+include_directories(${CMAKE_CURRENT_SOURSE_DIR}/vectorlib)
+
 add_subdirectory(vector) #Собираем проект в поддиректории lib1
 add_subdirectory(vectorlib) #Собираем проект в поддиректории lib1
 
@@ -19,7 +21,6 @@ add_subdirectory(vectorlib) #Собираем проект в поддирект
 
 
 #add_executable(${PROJECT_NAME} ${srcs} ${hdrs}) #Создаем проект с именем из переменной ${PROJECT_NAME}, в него добавляются файлы из переменных ${srcs} и ${hdrs}
-
 
 #add_subdirectory(lib1) #Собираем проект в поддиректории lib1
 #target_link_libraries(${PROJECT_NAME} ${MyLib1}) #Подключаем к проекту с именем ${PROJECT_NAME} библиотеку с именем ${MyLib1}
