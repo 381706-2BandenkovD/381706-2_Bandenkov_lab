@@ -8,12 +8,12 @@ int main()
   setlocale(LC_ALL, ""); 
   TInfixToPolish ExpConvertor;
   char Expression[80], *PolishExpression;
-  cout << "Перевод арифм. выражения из инфиксной в постфиксную запись" << endl;
-  cout << "Введите выражение" << endl;
+  cout << "Translation of arithmetic expression from infix to postfix notation" << endl;
+  cout << "Enter expression" << endl;
   cin >> Expression;
   PolishExpression = ExpConvertor.ConvertToPolish(Expression, strlen(Expression));
-  cout << "Выражение в инфиксной записи - " << Expression << endl;
-  cout << "Выражение в обратной польской записи - " << PolishExpression << endl;
-  cout << "Результат - " << ExpConvertor.Calculate(PolishExpression, strlen(Expression)) << endl;
+  cout << "ВInfix expression - " << Expression << endl;
+  cout << "Expression in reverse polish notation - " << PolishExpression << endl;
+  cout << "Result - " << ExpConvertor.Calculate(PolishExpression, strlen(Expression)) << endl;
   delete PolishExpression;
 }
