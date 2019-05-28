@@ -8,15 +8,6 @@ before_script:
 script:
   - cmake ../381706-2_Bandenkov_lab
   - make -j
-  - ./vectortest/vectortest
-  - ./matrixtest/matrixtest
-  - ./stacktest/stacktest
-  - ./multistacktest/multistacktest
-  - ./queuetest/queuetest
-  - ./datlisttest/datlisttest
-  - ./liststacktest/liststacktest
-  - ./arrlisttest/arrlisttest
-  - ./polinomtest/polinomtest
-  - ./infixtopolishtest/infixtopolishtest
+  - ./vector/vector
 notifications:
   email: false
