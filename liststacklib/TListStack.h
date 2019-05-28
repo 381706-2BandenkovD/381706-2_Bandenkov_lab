@@ -11,6 +11,7 @@ class TListStack
 {
 protected:
   TDatLink<ValType>* pFirst; // указатель на первое звено списка
+  int len;
 public:
   TListStack();
   ~TListStack();
@@ -19,12 +20,14 @@ public:
   void Put(ValType Val); // добавить значение в стек
   ValType Get(); // извлечь значение из стека
   void Print(); //ппечать
+  int GetLen() const;
 };
 
 template<class ValType>
 TListStack<ValType>::TListStack()
 {
   pFirst = NULL;
+  len = 0;
 }
 template<class ValType>
 TListStack<ValType>::~TListStack()
@@ -58,6 +61,7 @@ void TListStack<ValType>::Put(ValType Val)
   pTemp->SetDatValue(Val);
   pTemp->SetNextLink(pFirst);
   pFirst = pTemp;
+  len++;
 }
 
 template<class ValType>
@@ -69,17 +73,25 @@ ValType TListStack<ValType>::Get()
   ValType Val = pFirst->GetDatValue();
   pFirst = pFirst->GetNextLink();
   delete pTemp;
+  len--;
   return Val;
 }
+
 
 template<class ValType>
 void TListStack<ValType>::Print()
 {
   TDatLink<ValType>* pTemp = pFirst;
-  cout << "Stack Stamp (from top)" << endl;
   while (pTemp != NULL) {
     cout << pTemp->GetDatValue() << " ";
     pTemp = pTemp->GetNextLink();
   }
 }
+
+template<class ValType>
+int TListStack<ValType>::GetLen() const
+{
+    return len;
+}
+
 #endif

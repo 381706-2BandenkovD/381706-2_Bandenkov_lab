@@ -10,7 +10,6 @@ int main()
   TListStack<int> mst;
   int code, temp, val = 0;
   cout << "Testing stack support system (lists)" << endl;
-  cout << "Press any key" << endl;
   while (val < 100)
   {
     val++;
@@ -22,5 +21,6 @@ int main()
   }
   cout << "Stack Stamp" << endl;
   mst.Print();
+  cout << endl;
   return 0;
 }

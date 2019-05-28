@@ -68,40 +68,57 @@ double TInfixToPolish::Calculate(char* mem, int len)
 // выражение правильное, без пробелов, заканчивается знаком '='
 
 char * TInfixToPolish::ConvertToPolish(char * InfixExp, int len) {
-  char ch, t, *PolishExp = new char[strlen(InfixExp) + 1];
-  int pos = 0; // индекс текущего символа в выражении
-  TListStack<char> PolishStack, OperationStack;
-  bool key;
-  do {
-    ch = InfixExp[pos++];
-    if (isalpha(ch)) PolishStack.Put(ch); // операнд
-    else if (ch == '(') OperationStack.Put(ch);
-    else if (ch == ')') {
-      while (1) { // перепись операций из стека операций до откр. скобки
-        t = OperationStack.Get();
-        if (t == '(') break;
-        PolishStack.Put(t);
-      }
+    TListStack<char> operation, polish;
+    int i = 0;
+    char t;
+    while (i < len)
+    {
+        if (!IsOperation(InfixExp[i]))
+        {
+            while (!IsOperation(InfixExp[i]))
+            {
+                polish.Put(InfixExp[i++]);
+            }
+            i--;
+            polish.Put(' ');
+        }
+        else if (InfixExp[i] == '(')
+            operation.Put('(');
+        else if (InfixExp[i] == ')')
+        {
+            while (1)
+            {
+                char k = operation.Get();
+                if (k == '(')
+                    break;
+                polish.Put(k);
+            }
+        }
+        else
+        {
+            while (!operation.IsEmpty())
+            {
+                t = operation.Get();
+                if (GetOperationPrt(InfixExp[i]) <= GetOperationPrt(t))
+                    polish.Put(t);
+                else
+                {
+                    operation.Put(t);
+                    break;
+                }
+            }
+            operation.Put(InfixExp[i]);
+        }
+        if (InfixExp[i] == '=')
+            break;
+        i++;
     }
-    else if (IsOperation(ch)) { // операции с меньшим приоритетом
-      while (!OperationStack.IsEmpty()) { // в стек результатов
-        t = OperationStack.Get();
-        if (GetOperationPrt(ch) <= GetOperationPrt(t)) PolishStack.Put(t);
-        else { OperationStack.Put(t); break; }
-      }
-      OperationStack.Put(ch);
-    } // '=' в стеке операций
-  } while ((ch != '=') && (pos < len));
-    pos = 0;// длина выражения в польской записи
-    for (int i = 0; i < len; i++) {
-      if ((InfixExp[i] != '(') && (InfixExp[i] != ')'))
-        pos++;
-    }
-    PolishExp[pos] = '\0';
-    PolishExp[--pos] = '=';
-    // извлечение выражения из стека - порядок обратный
-    while (!PolishStack.IsEmpty()) PolishExp[--pos] = PolishStack.Get();
-    return PolishExp;
-  
+    int pos = polish.GetLen() + operation.GetLen();
+    char * mem = new char[pos + 1];
+    mem[pos] = '\0';
+    mem[--pos] = '=';
+    while (!polish.IsEmpty())
+        mem[--pos] = polish.Get();
+    return mem;
 }
 

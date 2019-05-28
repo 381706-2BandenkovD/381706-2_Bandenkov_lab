@@ -17,5 +17,6 @@ script:
   - ./liststacktest/liststacktest
   - ./arrlisttest/arrlisttest
   - ./polinomtest/polinomtest
+  - ./infixtopolishtest/infixtopolishtest
 notifications:
   email: false
