@@ -7,7 +7,7 @@ static char StrBuf[BufLength + 1];
 
 TText::TText(PTTextLink pl)
 {
-    if (pl == nullptr)
+    if (pl == NULL)
         pl = new TTextLink();
 
     pCurrent = pFirst = pl;
@@ -19,7 +19,7 @@ int TText::GoFirstLink(void)
 
     pCurrent = pFirst;
 
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
         SetRetCode(TextOK);
@@ -31,9 +31,9 @@ int TText::GoDownLink(void)
 {
     SetRetCode(TextError);
 
-    if (pCurrent != nullptr)
+    if (pCurrent != NULL)
     {
-        if (pCurrent->pDown != nullptr)
+        if (pCurrent->pDown != NULL)
         {
             Path.push(pCurrent);
             pCurrent = pCurrent->pDown;
@@ -50,9 +50,9 @@ int TText::GoNextLink(void)
 {
     SetRetCode(TextError);
 
-    if (pCurrent != nullptr)
+    if (pCurrent != NULL)
     {
-        if (pCurrent->pNext != nullptr)
+        if (pCurrent->pNext != NULL)
         {
             Path.push(pCurrent);
             pCurrent = pCurrent->pNext;
@@ -82,7 +82,7 @@ int TText::GoPrevLink(void)
 
 string TText::GetLine(void)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         return string("");
     else
         return string(pCurrent->Str);
@@ -90,7 +90,7 @@ string TText::GetLine(void)
 
 void TText::SetLine(string s)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
@@ -101,11 +101,11 @@ void TText::SetLine(string s)
 
 void TText::InsDownLine(string s)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-            PTTextLink tmp = new TTextLink (nullptr, pCurrent->pDown);
+            PTTextLink tmp = new TTextLink (NULL, pCurrent->pDown);
             strncpy(tmp->Str, s.c_str(), TextLineLength);
             tmp->Str[TextLineLength - 1] = '\0';
             pCurrent->pDown = tmp;
@@ -114,15 +114,15 @@ void TText::InsDownLine(string s)
 
 void TText::DelDownLine(void)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        if (pCurrent->pDown != nullptr)
+        if (pCurrent->pDown != NULL)
         {
             PTTextLink pl1 = pCurrent->pDown;
             PTTextLink pl2 = pl1->pNext;
-            if (pl1->pDown == nullptr)
+            if (pl1->pDown == NULL)
                 pCurrent->pDown = pl2;
         }
     }
@@ -130,11 +130,11 @@ void TText::DelDownLine(void)
 
 void TText::InsDownSection(string s)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        PTTextLink tmp = new TTextLink(nullptr, nullptr, pCurrent->pDown);
+        PTTextLink tmp = new TTextLink(NULL, NULL, pCurrent->pDown);
         strncpy(tmp->Str, s.c_str(), TextLineLength);
         tmp->Str[TextLineLength - 1] = '\0';
         pCurrent->pDown = tmp;
@@ -144,11 +144,11 @@ void TText::InsDownSection(string s)
 
 void TText::DelDownSection(void)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        if (pCurrent->pDown != nullptr)
+        if (pCurrent->pDown != NULL)
         {
             pCurrent->pDown = pCurrent->pDown->pNext;
         }
@@ -161,11 +161,11 @@ void TText::DelDownSection(void)
 
 void TText::InsNextLine(string s)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        PTTextLink tmp = new TTextLink(nullptr, pCurrent->pNext);
+        PTTextLink tmp = new TTextLink(NULL, pCurrent->pNext);
         strncpy(tmp->Str, s.c_str(), TextLineLength);
         tmp->Str[TextLineLength - 1] = '\0';
         pCurrent->pNext = tmp;
@@ -174,16 +174,16 @@ void TText::InsNextLine(string s)
 
 void TText::DelNextLine(void)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        if (pCurrent->pNext != nullptr)
+        if (pCurrent->pNext != NULL)
         {
             PTTextLink pl1 = pCurrent->pNext;
             PTTextLink pl2 = pl1->pNext;
 
-            if (pl1->pDown == nullptr)
+            if (pl1->pDown == NULL)
                 pCurrent->pNext = pl2;
         }
         else
@@ -195,11 +195,11 @@ void TText::DelNextLine(void)
 
 void TText::InsNextSection(string s)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        PTTextLink tmp = new TTextLink(nullptr, nullptr, pCurrent->pNext);
+        PTTextLink tmp = new TTextLink(NULL, NULL, pCurrent->pNext);
         strncpy(tmp->Str, s.c_str(), TextLineLength);
         tmp->Str[TextLineLength - 1] = '\0';
         pCurrent->pNext = tmp;
@@ -208,11 +208,11 @@ void TText::InsNextSection(string s)
 
 void TText::DelNextSection(void)
 {
-    if (pCurrent == nullptr)
+    if (pCurrent == NULL)
         SetRetCode(TextError);
     else
     {
-        if (pCurrent->pNext != nullptr)
+        if (pCurrent->pNext != NULL)
         {
             PTTextLink pl1 = pCurrent->pNext;
             PTTextLink pl2 = pl1->pNext;
@@ -236,12 +236,12 @@ int TText::Reset(void)
         St.pop();
 
     pCurrent = pFirst;
-    if (pCurrent != nullptr)
+    if (pCurrent != NULL)
     {
         St.push(pCurrent);
-        if (pCurrent->pNext != nullptr)
+        if (pCurrent->pNext != NULL)
             St.push(pCurrent->pNext);
-        if (pCurrent->pDown != nullptr)
+        if (pCurrent->pDown != NULL)
             St.push(pCurrent->pDown);
     }
     return IsTextEnded();
@@ -256,9 +256,9 @@ int TText::GoNext(void)
 
         if (pCurrent != pFirst)
         {
-            if (pCurrent->pNext != nullptr)
+            if (pCurrent->pNext != NULL)
                 St.push(pCurrent->pNext);
-            if (pCurrent->pDown != nullptr)
+            if (pCurrent->pDown != NULL)
                 St.push(pCurrent->pDown);
         }
     }
@@ -281,17 +281,17 @@ PTText TText::GetCopy()
 {
     PTTextLink pl, pl1, pl2, cpl;
     pl = pFirst;
-    cpl = nullptr;
+    cpl = NULL;
     char s[5] = "Copy";
 
-    if (pFirst != nullptr)
+    if (pFirst != NULL)
     {
         while (!St.empty())
             St.pop();
 
         while (true)
         {
-            if (pl != nullptr)
+            if (pl != NULL)
             {
                 pl = GetFirstAtom(pl);
                 St.push(pl);
@@ -304,12 +304,12 @@ PTText TText::GetCopy()
                     pl1 = St.top();
                     St.pop();
 
-                    if (strstr(pl1->Str, "Copy") == nullptr)
+                    if (strstr(pl1->Str, "Copy") == NULL)
                     {
                         pl2 = new TTextLink (s, pl1, cpl);
                         St.push(pl2);
                         pl = pl1->pNext;
-                        cpl = nullptr;
+                        cpl = NULL;
                     }
                     else
                     {
@@ -326,7 +326,7 @@ PTText TText::GetCopy()
 
 void TText::PrintText(PTTextLink ptl)
 {
-    if (ptl != nullptr)
+    if (ptl != NULL)
     {
         for (int i = 0; i < TextLevel; i++)
             cout << " ";
@@ -363,12 +363,12 @@ PTTextLink TText::ReadText(ifstream &TxtFile)
         }
         else
         {
-            ptl->pNext = new TTextLink(StrBuf, nullptr, nullptr);
+            ptl->pNext = new TTextLink(StrBuf, NULL, NULL);
             ptl = ptl->pNext;
         }
     }
     ptl = pHead;
-    if (pHead->pDown == nullptr)
+    if (pHead->pDown == NULL)
     {
         pHead = pHead->pNext;
         delete ptl;
@@ -387,7 +387,7 @@ void TText::Read(char * pFileName)
 
 void TText::wr(ofstream &txt, PTTextLink ptl)
 {
-    if (ptl != nullptr)
+    if (ptl != NULL)
     {
         for (int i = 0; i < TextLevel; i++)
             txt << " ";

@@ -15,16 +15,16 @@ void TTextLink::InitMemSystem(int size)
 		pLink->pNext = pLink + 1;
 		++pLink;
 	}
-	pLink->pNext = nullptr;
+	pLink->pNext = NULL;
 }
 
 void TTextLink::PrintFreeLink()
 {
 	PTTextLink pLink = MemHeader.pFree;
 
-	if (pLink == nullptr) cout << "No free links" << endl;
+	if (pLink == NULL) cout << "No free links" << endl;
 
-	while (pLink != nullptr)
+	while (pLink != NULL)
 	{
 		cout << pLink->Str << endl;
 		pLink = pLink->pNext;
@@ -35,7 +35,7 @@ void* TTextLink::operator new (size_t size)
 {
 	PTTextLink pLink = MemHeader.pFree;
 	
-	if (MemHeader.pFree != nullptr)
+	if (MemHeader.pFree != NULL)
 		MemHeader.pFree = MemHeader.pFree->pNext;
 
 	return pLink;
@@ -43,7 +43,7 @@ void* TTextLink::operator new (size_t size)
 
 void TTextLink::operator delete (void *pM)
 {
-	if (pM == nullptr) throw - 1;
+	if (pM == NULL) throw - 1;
 
 	PTTextLink pLink = (PTTextLink)pM;
 	pLink->pNext = MemHeader.pFree;
@@ -63,7 +63,7 @@ void TTextLink::MemCleaner(TText &txt)
 	}
 
 	PTTextLink pLink = MemHeader.pFree;
-	while (pLink != nullptr)
+	while (pLink != NULL)
 	{
 		strcpy(pLink->Str, "&&&");
 		pLink = pLink->pNext;
@@ -72,7 +72,7 @@ void TTextLink::MemCleaner(TText &txt)
 	pLink = MemHeader.pFirst;
 	while (pLink <= MemHeader.pLast)
 	{
-		if (strstr(pLink->Str, "&&&") != nullptr)
+		if (strstr(pLink->Str, "&&&") != NULL)
 			strcpy(pLink->Str, pLink->Str + 3);
 		else
 			delete pLink;
