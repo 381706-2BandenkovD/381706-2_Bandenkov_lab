@@ -34,7 +34,9 @@ set(polinom polinom)
 set(infixtopolish infixtopolish)
 set(infixtopolishlib infixtopolishlib)
 set(infixtopolishtest infixtopolishtest)
-
+set(ttextlib ttextlib)
+set(ttexttest ttexttest)
+set(ttext ttext)
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE) #Создается переменная CMAKE_CONFIGURATION_TYPES со значением "Debug;Release" и меткой/разделом Configs, переменная сохраниется в специальном файле доступном из всех файлов,
 if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компилятора вариантов сборки
@@ -75,6 +77,10 @@ add_subdirectory(polinom)
 add_subdirectory(infixtopolishlib)
 add_subdirectory(infixtopolishtest)
 add_subdirectory(infixtopolish)
+add_subdirectory(ttextlib ttextlib)
+add_subdirectory(ttexttest ttexttest)
+add_subdirectory(ttext ttext)
+
 
 #file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все файлы с расширением .h
 #file(GLOB srcs "*.cpp") #Добавляем в переменную srcs все файлы с расширением .h

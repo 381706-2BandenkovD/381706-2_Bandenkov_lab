@@ -18,5 +18,6 @@ script:
   - ./arrlisttest/arrlisttest
   - ./polinomtest/polinomtest
   - ./infixtopolishtest/infixtopolishtest
+  - ./ttexttest/ttexttest
 notifications:
   email: false
