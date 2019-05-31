@@ -37,13 +37,16 @@ set(infixtopolishtest infixtopolishtest)
 set(ttextlib ttextlib)
 set(ttexttest ttexttest)
 set(ttext ttext)
+set(chartlib chartlib)
+set(chart chart)
+set(charttest charttest)
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE) #Создается переменная CMAKE_CONFIGURATION_TYPES со значением "Debug;Release" и меткой/разделом Configs, переменная сохраниется в специальном файле доступном из всех файлов,
 if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компилятора вариантов сборки
   set(CMAKE_BUILD_TYPE Release) #Если нет то устанавливаем Release
 endif()
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ttextlib ${CMAKE_CURRENT_SOURCE_DIR}/infixtopolishlib ${CMAKE_CURRENT_SOURCE_DIR}/arrlistlib ${CMAKE_CURRENT_SOURCE_DIR}/polinomlib ${CMAKE_CURRENT_SOURCE_DIR}/liststacklib ${CMAKE_CURRENT_SOURCE_DIR}/datlistlib ${CMAKE_CURRENT_SOURCE_DIR}/vectorlib ${CMAKE_CURRENT_SOURCE_DIR}/datlink  ${CMAKE_CURRENT_SOURCE_DIR}/matrixlib ${CMAKE_CURRENT_SOURCE_DIR}/stacklib ${CMAKE_CURRENT_SOURCE_DIR}/multistacklib ${CMAKE_CURRENT_SOURCE_DIR}/queuelib ${CMAKE_CURRENT_SOURCE_DIR}/exeptionlib ${CMAKE_CURRENT_SOURCE_DIR}/gtest)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/chartlib ${CMAKE_CURRENT_SOURCE_DIR}/ttextlib ${CMAKE_CURRENT_SOURCE_DIR}/infixtopolishlib ${CMAKE_CURRENT_SOURCE_DIR}/arrlistlib ${CMAKE_CURRENT_SOURCE_DIR}/polinomlib ${CMAKE_CURRENT_SOURCE_DIR}/liststacklib ${CMAKE_CURRENT_SOURCE_DIR}/datlistlib ${CMAKE_CURRENT_SOURCE_DIR}/vectorlib ${CMAKE_CURRENT_SOURCE_DIR}/datlink  ${CMAKE_CURRENT_SOURCE_DIR}/matrixlib ${CMAKE_CURRENT_SOURCE_DIR}/stacklib ${CMAKE_CURRENT_SOURCE_DIR}/multistacklib ${CMAKE_CURRENT_SOURCE_DIR}/queuelib ${CMAKE_CURRENT_SOURCE_DIR}/exeptionlib ${CMAKE_CURRENT_SOURCE_DIR}/gtest)
 
 add_subdirectory(vector)
 add_subdirectory(vectorlib)
@@ -80,6 +83,9 @@ add_subdirectory(infixtopolish)
 add_subdirectory(ttextlib ttextlib)
 add_subdirectory(ttexttest ttexttest)
 add_subdirectory(ttext ttext)
+add_subdirectory(chartlib)
+add_subdirectory(charttest)
+add_subdirectory(chart)
 
 
 #file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все файлы с расширением .h

@@ -19,5 +19,6 @@ script:
   - ./polinomtest/polinomtest
   - ./infixtopolishtest/infixtopolishtest
   - ./ttexttest/ttexttest
+  - ./charttest/charttest
 notifications:
   email: false
