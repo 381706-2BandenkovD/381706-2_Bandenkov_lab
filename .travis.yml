@@ -20,5 +20,6 @@ script:
   - ./infixtopolishtest/infixtopolishtest
   - ./ttexttest/ttexttest
   - ./charttest/charttest
+  - ./tabletest/tabletest
 notifications:
   email: false
