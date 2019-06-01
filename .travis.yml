@@ -23,5 +23,6 @@ script:
   - ./tabletest/tabletest
   - ./sorttabletest/sorttabletest
   - ./treetabletest/treetabletest
+  - ./hashtabletest/hashtabletest
 notifications:
   email: false
