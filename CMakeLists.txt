@@ -46,6 +46,9 @@ set(tabletest tabletest)
 set(sorttablelib sorttablelib)
 set(sorttable sorttable)
 set(sorttabletest sorttabletest)
+set(treetablelib treetablelib)
+set(treetable treetable)
+set(treetabletest treetabletest)
 
 
 
@@ -54,7 +57,7 @@ if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компиля
   set(CMAKE_BUILD_TYPE Release) #Если нет то устанавливаем Release
 endif()
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/sorttablelib ${CMAKE_CURRENT_SOURCE_DIR}/tablelib ${CMAKE_CURRENT_SOURCE_DIR}/chartlib ${CMAKE_CURRENT_SOURCE_DIR}/ttextlib ${CMAKE_CURRENT_SOURCE_DIR}/infixtopolishlib ${CMAKE_CURRENT_SOURCE_DIR}/arrlistlib ${CMAKE_CURRENT_SOURCE_DIR}/polinomlib ${CMAKE_CURRENT_SOURCE_DIR}/liststacklib ${CMAKE_CURRENT_SOURCE_DIR}/datlistlib ${CMAKE_CURRENT_SOURCE_DIR}/vectorlib ${CMAKE_CURRENT_SOURCE_DIR}/datlink  ${CMAKE_CURRENT_SOURCE_DIR}/matrixlib ${CMAKE_CURRENT_SOURCE_DIR}/stacklib ${CMAKE_CURRENT_SOURCE_DIR}/multistacklib ${CMAKE_CURRENT_SOURCE_DIR}/queuelib ${CMAKE_CURRENT_SOURCE_DIR}/exeptionlib ${CMAKE_CURRENT_SOURCE_DIR}/gtest)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/treetablelib ${CMAKE_CURRENT_SOURCE_DIR}/sorttablelib ${CMAKE_CURRENT_SOURCE_DIR}/tablelib ${CMAKE_CURRENT_SOURCE_DIR}/chartlib ${CMAKE_CURRENT_SOURCE_DIR}/ttextlib ${CMAKE_CURRENT_SOURCE_DIR}/infixtopolishlib ${CMAKE_CURRENT_SOURCE_DIR}/arrlistlib ${CMAKE_CURRENT_SOURCE_DIR}/polinomlib ${CMAKE_CURRENT_SOURCE_DIR}/liststacklib ${CMAKE_CURRENT_SOURCE_DIR}/datlistlib ${CMAKE_CURRENT_SOURCE_DIR}/vectorlib ${CMAKE_CURRENT_SOURCE_DIR}/datlink  ${CMAKE_CURRENT_SOURCE_DIR}/matrixlib ${CMAKE_CURRENT_SOURCE_DIR}/stacklib ${CMAKE_CURRENT_SOURCE_DIR}/multistacklib ${CMAKE_CURRENT_SOURCE_DIR}/queuelib ${CMAKE_CURRENT_SOURCE_DIR}/exeptionlib ${CMAKE_CURRENT_SOURCE_DIR}/gtest)
 
 add_subdirectory(vector)
 add_subdirectory(vectorlib)
@@ -100,6 +103,9 @@ add_subdirectory(table)
 add_subdirectory(sorttablelib)
 add_subdirectory(sorttabletest)
 add_subdirectory(sorttable)
+add_subdirectory(treetablelib)
+add_subdirectory(treetabletest)
+add_subdirectory(treetable)
 
 #file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все файлы с расширением .h
 #file(GLOB srcs "*.cpp") #Добавляем в переменную srcs все файлы с расширением .h
